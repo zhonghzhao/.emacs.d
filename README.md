@@ -1,1 +1,1 @@
-测试用的emacs的配置使用的
+仿照改写的简单的emacs配置，主要为了使用latex和python,git等基本功能。
