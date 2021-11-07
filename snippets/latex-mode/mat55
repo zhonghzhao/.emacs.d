@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+#name : mat55
+# key: mat55
+# --
+\begin{${1:$$(yas/choose-value '("pmatrix" "bmatrix" "Bmatrix" "vmatrix" "Vmatrix" "smallmatrix"))}}
+   $0 &   &  &\cdots&  \\\
+      &   &  &\cdots&  \\\
+      &   &  &\cdots& \\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\\
+      &   &  &\cdots&  \\\
+\end{$1}

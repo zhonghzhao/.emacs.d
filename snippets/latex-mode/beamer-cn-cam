@@ -1,0 +1,140 @@
+# -*- mode: snippet -*-
+# name:beamer-cn-CambridgeUS
+# key: beamer-cn-cam
+# --
+%!TEX program = xelatex
+\documentclass[UTF8,10pt,AutoFakeBold]{ctexbeamer}
+\usepackage{ulem,bm,multicol,ifthen,setspace}
+\usepackage[all]{xy}
+
+\setCJKmainfont{STZhongsong}
+\setmainfont{Times New Roman}
+
+\setcounter{section}{-1}
+
+\newboolean{print}
+\setboolean{print}{true}
+
+\newcommand{\jd}[2][]{
+\begin{minipage}[t][#1 cm][t]{1\linewidth}	
+	\ifthenelse{\boolean{print}}{#2}{}
+\end{minipage}}
+
+\setbeamertemplate{theorems}[numbered]  %amsthm重新定义定理格式
+\newtheoremstyle{mythm}{}{}{}{\parindent}{}{}{1em}{}
+\theoremstyle{mythm}
+\newtheorem{thm}{定理\,}[section]
+\newtheorem{prop}[thm]{命题\,}
+\newtheorem{defn}[thm]{定义\,}
+\newtheorem{lem}[thm]{引理\,}
+\newtheorem{cor}[thm]{推论\,}
+\newtheorem{rmk}[thm]{注记\,}
+\newtheorem{exam}[]{例\,}[section]
+\newtheorem{exer}[]{练习\,}[section]
+\newtheorem{ques}[thm]{问题\,}
+\newtheorem{axiom}[thm]{公理\,}
+
+\numberwithin{equation}{section}
+
+
+\makeatletter  %下面的两段代码可以去掉“证明或解”后的点
+\renewenvironment{proof}[1][\proofname]{\par\pushQED{\qed}\normalfont \topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep#1]\ignorespaces}
+{\popQED\endtrivlist\@endpefalse}\makeatother
+\renewcommand{\proofname}{\indent 证明:}
+
+\makeatletter
+\newenvironment{sol}[1][\solname]{\par\pushQED{\qed}\normalfont \topsep6\p@\@plus6\p@\relax\trivlist\item[\hskip\labelsep#1]\ignorespaces}
+{\popQED\endtrivlist\@endpefalse}\makeatother
+\newcommand{\solname}{\indent 解:}
+
+\usetheme{CambridgeUS}  %无导航条可用的的主题:CambridgeUS,AnnArbor,Boadilla,Madrid
+
+% \useoutertheme{split} %设定演示文稿是否有顶栏、底栏和侧栏，以及它们的结构
+
+% \useinnertheme{circles} %设定演示文稿正文内容(例如标题、列表、定理等)的样式: default,circles,rectangles和rounded
+
+\usecolortheme{rose} %设定演示文稿的各元素配色, 打印用dove
+  %default、albatross、beaver、beetle、crane、dolphin、dove、fly、lily、orchid、rose、seagull、seahorse、sidebartab、structure、whale 和wolverine
+
+\usefonttheme{serif}  %设定演示文稿的字体
+
+
+\AtBeginEnvironment{thm}{
+    \setbeamercolor{block title}{fg=black,bg=cyan!50}
+    % \setbeamercolor{block body}{fg=black, bg=pink}
+    }
+
+\AtBeginEnvironment{lem}{
+    \setbeamercolor{block title}{fg=black,bg=lime}
+    % \setbeamercolor{block body}{fg=black, bg=orange}
+    }
+
+\AtBeginEnvironment{defn}{
+    \setbeamercolor{block title}{fg=black,bg=blue!40!white}
+    % \setbeamercolor{block body}{fg=black, bg=orange}
+    }
+
+\AtBeginEnvironment{cor}{
+    \setbeamercolor{block title}{fg=black,bg=brown!60}
+    % \setbeamercolor{block body}{fg=black, bg=orange}
+    }
+
+\AtBeginEnvironment{prop}{
+    \setbeamercolor{block title}{fg=black,bg=olive!50!white}
+    % \setbeamercolor{block body}{fg=black, bg=lime}
+    }
+
+\AtBeginEnvironment{exer}{
+    \setbeamercolor{block title}{fg=black,bg=green!70}
+    % \setbeamercolor{block body}{fg=black, bg=violet}
+    }
+
+\AtBeginEnvironment{rmk}{
+    \setbeamercolor{block title}{fg=black,bg=red!40!white}
+      % \setbeamercolor{block body}{fg=black, bg=violet}
+    }
+
+\AtBeginEnvironment{ques}{
+    \setbeamercolor{block title}{fg=black,bg=pink!50!gray}
+    % \setbeamercolor{block body}{fg=black, bg=violet}
+  }
+  
+\AtBeginEnvironment{con}{
+    \setbeamercolor{block title}{fg=black,bg=magenta!50!white}
+    % \setbeamercolor{block body}{fg=black, bg=violet}
+    }
+
+\AtBeginEnvironment{exam}{
+    \setbeamercolor{block title}{fg=black,bg=yellow!75!red}
+      % \setbeamercolor{block body}{fg=black, bg=violet}
+      }
+
+\setlength{\headheight}{27pt}
+
+%\setboolean{print}{false} %是否打印答案
+\setstretch{1.25}   %设置行间距
+
+
+\begin{document}
+\author[]{}
+\institute[$\bullet\_ \bullet$]{}
+\title[$1]{\zihao{2}$2}
+%\subtitle{\zihao{3}Abstract Algebra}
+%\frame{\titlepage}
+\date{{}}
+
+%\setbeamertemplate{frametitle}[default][center]
+
+\setcounter{tocdepth}{3}
+
+\begin{frame}[shrink]{$3}
+\begin{multicols}{2}
+  \tableofcontents
+\end{multicols}
+  %逐条出现用下面命令
+  %\tableofcontents[pausesections]
+\end{frame}
+
+
+
+\end{document}
